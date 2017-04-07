@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="assets/materializecss/css/materialize.min.css">
+  <title>Wallpaper Clicker</title>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <ul class="collection" data-bind="foreach: wallpaperList">
+        <li class="collection-item" data-bind="text: name, click: $parent.setWallpaper"></li>
+      </ul>
+      <div class="col l6" >
+        <div class="card" data-bind="with: currentWallpaper">
+            <div class="card-image">
+              <img id="wallpaper-img" src="" 
+              data-bind="click: $parent.incrementCounter, attr: {src: imgSrc}" alt="awesome wallpaper">
+            </div>
+          <div class="card-content">
+            <span class="card-title" data-bind="click: $parent.incrementCounter, text: name"></span>
+              <strong>State:</strong> <span data-bind="text: imgAttribution"></span>
+              <br>
+              <strong>Clicks:</strong> <span class="new label" data-bind="text: clickCount"></span>
+              <table>
+                <thead>
+                  <tr>
+                    <th>
+                      Nicknames
+                    </th>
+                    <th>
+                      Info
+                    </th>
+                  </tr>
+                </thead>
+                <tbody data-bind="foreach: nicknames">
+                  <tr>
+                    <td data-bind="text: nickname"></td>
+                    <td data-bind="text: type"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/knockout.js"></script>
+  <script src="js/models/Wallpaper.js"></script>
+  <script src="js/vm/ViewModel.js"></script>
+</body>
+
+</html>
